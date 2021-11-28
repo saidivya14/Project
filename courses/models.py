@@ -19,9 +19,3 @@ class Course(models.Model):
             output_size = (400,400)
             img.thumbnail(output_size)
             img.save(self.image.path)
-
-
-class FavouriteCourse(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    course = models.ForeignKey(Course, on_delete=models.CASCADE)
-

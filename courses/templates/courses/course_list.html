@@ -10,6 +10,7 @@
 
 <div class="row">
     <!-- CARD -->
+    <!-- Display title,description,image for every course in courses page-->
     {% for course in courses %}
         <div class="col-3">
             <div class="card shadow">
@@ -19,9 +20,11 @@
                     <p class="card-text">{{ course.description }}</p>
                     <div class="d-flex flex-row">
                         <a class="mr-auto btn btn-circle" href=""><img src="{% static 'mainapp/icons/star.svg' %}" alt=""></a>
+                        <!-- when click here it redirects to youtube/given reference link -->
                         <a class="btn" href="{{ course.link }}" target="_blank">Go to the course</a>
                     </div>
                     {% if course.created_by == request.user %}
+                        <!-- you can edit/delete the course by clicking update course -->
                         <a class="btn btn-sm btn-danger float-right mt-1" href="{% url 'courses:update_course' course.pk %}" target="_blank">Update course</a>
                     {% endif %}
                 </div>
