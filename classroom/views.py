@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from .models import Classroom,Topic,ClassroomTeachers
+from .models import Classroom,Topic,ClassroomTeachers,ClassroomStudents
 from posts.models import Assignment,SubmittedAssignment,AssignmentFile, Attachment
 from .forms import ClassroomCreationForm,JoinClassroomForm, PostForm, AssignmentFileForm, AssignmentCreateForm, GradeStudentForm
 from comments.forms import CommentCreateForm, PrivateCommentForm
@@ -51,6 +51,8 @@ def join_classroom(request):
             if classroom:
                 request.user.classroom_set.add(classroom)
                 messages.success(request, f'You are added in {classroom.name}')
+                classroom_students = ClassroomStudents(classroomname = classroom.name, student=request.user)
+                classroom_students.save()
             else:
                 messages.success(request, f'Error adding you to the classroom')
         else:
@@ -84,9 +86,10 @@ def open_classroom(requests,pk):
 @login_required
 def members(request, pk):
     classroom = get_object_or_404(Classroom, pk=pk)
+    a = classroom.name
     context = {
         'teachers': classroom.classroomteachers_set.all(),
-        'students': classroom.users.all(),
+        'students': ClassroomStudents.objects.filter(classroomname=a),
     }
     return render(request, 'classroom/members.html', context)
 

@@ -4,5 +4,6 @@ from . import models
 
 admin.site.register(models.Classroom)
 admin.site.register(models.ClassroomTeachers)
+admin.site.register(models.ClassroomStudents)
 admin.site.register(models.Topic)
 

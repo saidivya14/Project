@@ -25,6 +25,10 @@ class ClassroomTeachers(models.Model):
     def __str__(self):
         return f'{self.teacher.username} -> {self.classroom.name}'
 
+class ClassroomStudents(models.Model):
+    classroomname = models.CharField(max_length=200,blank=True)
+    student = models.ForeignKey(User, on_delete=models.CASCADE)
+
 
 class Topic(models.Model):
     name = models.CharField(max_length=200)
