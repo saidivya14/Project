@@ -35,3 +35,6 @@ class AssignmentCreateForm(forms.Form):
     points = forms.IntegerField(min_value=0,max_value =100)
     due_date = forms.DateTimeField()
     file_field = forms.FileField(widget=forms.ClearableFileInput(attrs={'multiple': True})) 
+
+class GradeStudentForm(forms.Form):
+    grade = forms.IntegerField(min_value=0,max_value =100)

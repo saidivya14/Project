@@ -2,11 +2,9 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-
-
 from .models import Classroom,Topic,ClassroomTeachers
 from posts.models import Assignment,SubmittedAssignment,AssignmentFile, Attachment
-from .forms import ClassroomCreationForm,JoinClassroomForm, PostForm, AssignmentFileForm, AssignmentCreateForm
+from .forms import ClassroomCreationForm,JoinClassroomForm, PostForm, AssignmentFileForm, AssignmentCreateForm, GradeStudentForm
 from comments.forms import CommentCreateForm, PrivateCommentForm
 
 @login_required
@@ -236,4 +234,35 @@ def student_work(request, pk):
     context = {'assignment': assignment}
     return render(request, 'classroom/student_work.html', context)
 
+@login_required
+def view_grades(request,pk):
+    assignment = get_object_or_404(Assignment,pk=pk)
+    submitted_assignments = assignment.submittedassignment_set.all()
+    context = {
+        'submitted_assignments':submitted_assignments,
+        'assignment':assignment,
+    }
+    return render(request, 'classroom/view_grades.html', context)
 
+@login_required
+def grade(request,pk):
+    submit_assignment = get_object_or_404(SubmittedAssignment, pk=pk)
+    if request.method == 'POST':
+        grade_form = GradeStudentForm(request.POST)
+        if grade_form.is_valid():
+            grade = grade_form.cleaned_data.get('grade')
+            submit_assignment.is_reviewed = True
+            submit_assignment.grade = grade 
+            submit_assignment.save()
+        else:
+            print('not valid')
+    else:
+        grade_form = GradeStudentForm() 
+            
+    assignment_files = submit_assignment.assignmentfile_set.all()
+    context = {
+        'submit_assignment':submit_assignment,
+        'assignment_files':assignment_files,
+        'grade_form':grade_form,
+    }
+    return render(request, 'classroom/grade.html', context)

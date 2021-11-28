@@ -27,7 +27,6 @@ urlpatterns = [
     path('classroom/',include('classroom.urls')),
     path('comments', include('comments.urls')),
     path('posts/', include('posts.urls')),
-    path('assignments/', include('assignments.urls')),
     path('courses/', include('courses.urls')),
     path('ide/', include('ide.urls')),
     path('cal/', include('cal.urls')),
@@ -53,3 +52,5 @@ urlpatterns = [
     ),
       name='password_reset_complete'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

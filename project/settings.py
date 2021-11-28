@@ -26,7 +26,7 @@ SECRET_KEY = 'z(23lo+h=$c0o_9$t_cj5o0+8q_$5&oa&(9v6#+#9y1vd)ic2_'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -43,7 +43,6 @@ INSTALLED_APPS = [
     'classroom',
     'comments',
     'posts',
-    'assignments',
     'courses',
     'ide',
     'cal',

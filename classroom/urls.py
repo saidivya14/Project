@@ -18,4 +18,6 @@ urlpatterns = [
     path('todo/', views.todo, name = 'todo'),
     path('toreview/', views.toreview, name = 'toreview'),
     path('<int:pk>/classwork/', views.classwork, name = 'classwork'),
+    path('<int:pk>/view-grades/', views.view_grades, name='view_grades'),
+    path('<int:pk>/grade/', views.grade, name='grade'),
 ]
