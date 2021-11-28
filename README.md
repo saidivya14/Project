@@ -8,6 +8,7 @@ It is a simple, User-friendly, secured website that helps to clone the best feat
 >  - User can register/login/logout/reset-password in this website
 >  - When user registered he/she will get confirmation message in mail
 >  - User can reset password through mail
+>  - User can edit their profile
 
 >  ### Classroom
 >  - User can create/join a classroom
