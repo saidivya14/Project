@@ -24,9 +24,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'z(23lo+h=$c0o_9$t_cj5o0+8q_$5&oa&(9v6#+#9y1vd)ic2_'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['https://deploy-project-application.herokuapp.com','localhost']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -152,4 +152,4 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'EngageProgram14@gmail.com'
 EMAIL_HOST_PASSWORD = 'Microsoft@14'
 
-django_heroku.settings(locals())
+

@@ -16,6 +16,7 @@
             <p class="card-text">{{ classroom.description }}</p>
             <input type="text"  value="{{ classroom.classroom_code }}" id="classroom-code">
             <button class = "btn btn-sm btn-outline-primary" onclick="copyCode()">Copy</button>
+            <a class="btn btn-sm " href="{% url 'classroom:members_classroom' classroom.id %}" target="_blank">Members</a>
         </div>
         </div>
     </div>

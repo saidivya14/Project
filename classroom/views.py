@@ -82,13 +82,6 @@ def open_classroom(requests,pk):
 
     return render(requests, 'classroom/classroom.html', context)
 
-@login_required
-def delete_classroom(requests):
-    context = {
-        'title' : 'Classroom',
-    }
-    return render(requests, 'base.html', context)
-
 
 @login_required
 def members(request, pk):
