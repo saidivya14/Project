@@ -17,6 +17,7 @@ It is a simple, User-friendly, secured website that helps to clone the best feat
 >  - User can see due assignments in to do
 >  - User can review students submissions in to review
 >  - User can comment publicly in classroom or privately under his/her submission
+>  - User can see the teachers/students in particular classroom 
 
 >  ### Courses
 > - One can ADD/UPDATE/DELETE course
